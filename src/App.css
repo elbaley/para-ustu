@@ -35,14 +35,199 @@ img {
 }
 /* 
 END RESET */
+.App {
+	display: flex;
+	justify-content: center;
+}
+body {
+	background: #27313a;
+	color: gainsboro;
+}
 ul {
 	list-style: inside;
 }
 
 input {
 	display: inline;
+	width: 60px;
+	font-size: 16px;
 }
 label {
 	display: inline-block;
 	padding-right: 0.4rem;
+}
+main {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.balance {
+	margin-top: 5%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+/* Banknot Styles */
+.card {
+	height: 300px;
+	width: 245px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	-webkit-animation: bounce 4s;
+}
+.bounce {
+	-webkit-animation: bounce 4s;
+}
+.card input {
+	width: 60px;
+	font-size: 20px;
+	text-align: center;
+	border-radius: 0;
+	border: none;
+	height: 30px;
+}
+.card img {
+	transform: rotate(0.75turn);
+	height: 250px;
+	object-fit: contain;
+}
+.note-info {
+	display: flex;
+}
+.increase,
+.decrease {
+	border: none;
+	font-size: 1.1rem;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+.increase {
+	background: #28a745;
+	border-color: #28a745;
+	border-radius: 8px 0 0 8px;
+	color: #fff;
+}
+.decrease {
+	background: #dc3545;
+	border-radius: 0 8px 8px 0;
+	color: #fff;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.tl1 img {
+	transform: scale(0.75);
+}
+
+/* Scroll down indicator (bouncing) */
+@-webkit-keyframes bounce {
+	0%,
+	20% {
+		-webkit-transform: translateY(-50px);
+	}
+	50%,
+	80%,
+	100% {
+		-webkit-transform: translateY(0);
+	}
+	40% {
+		-webkit-transform: translateY(-30px);
+	}
+	60% {
+		-webkit-transform: translateY(-15px);
+	}
+}
+@-moz-keyframes bounce {
+	0%,
+	20% {
+		-moz-transform: translateY(-50px);
+	}
+	50%,
+	80%,
+	100% {
+		-moz-transform: translateY(0);
+	}
+	40% {
+		-moz-transform: translateY(-30px);
+	}
+	60% {
+		-moz-transform: translateY(-15px);
+	}
+}
+@keyframes bounce {
+	0% {
+		-webkit-transform: translateY(-500px);
+		-moz-transform: translateY(-500px);
+		-ms-transform: translateY(-500px);
+		-o-transform: translateY(-500px);
+		transform: translateY(-500px);
+	}
+	20%,
+	50%,
+	80%,
+	100% {
+		-webkit-transform: translateY(0);
+		-moz-transform: translateY(0);
+		-ms-transform: translateY(0);
+		-o-transform: translateY(0);
+		transform: translateY(0);
+	}
+	40% {
+		-webkit-transform: translateY(-30px);
+		-moz-transform: translateY(-30px);
+		-ms-transform: translateY(-30px);
+		-o-transform: translateY(-30px);
+		transform: translateY(-30px);
+	}
+	60% {
+		-webkit-transform: translateY(-15px);
+		-moz-transform: translateY(-15px);
+		-ms-transform: translateY(-15px);
+		-o-transform: translateY(-15px);
+		transform: translateY(-15px);
+	}
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-device-width: 768px) {
+	body {
+		background: red;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-device-width: 992px) {
+	body {
+		background: blue;
+	}
+	.card {
+		height: 300px;
+		width: 150px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		-webkit-animation: bounce 4s;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
