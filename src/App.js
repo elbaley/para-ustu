@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 // COMPONENTS
 import Banknot from './components/Banknot';
+import GivenAmount from './components/GivenAmount';
 function App() {
 	const [toplam, setToplam] = useState(0);
 	const [verilen, setVerilen] = useState(0);
@@ -70,8 +71,12 @@ function App() {
 	};
 	return (
 		<div className="App">
+			<nav>
+				<h2>
+					Kasa Durumu : <span>{kasaToplam}₺</span>{' '}
+				</h2>
+			</nav>
 			<main>
-				<h2>Kasa Durumu</h2>
 				<div className="balance">
 					<Banknot kasa={kasa} note={1} setKasa={setKasa} />
 					<Banknot kasa={kasa} note={5} setKasa={setKasa} />
@@ -81,9 +86,7 @@ function App() {
 					<Banknot kasa={kasa} note={100} setKasa={setKasa} />
 					<Banknot kasa={kasa} note={200} setKasa={setKasa} />
 				</div>
-				<p>Kasada toplam {kasaToplam}₺ para var! </p>
-
-				<h2>Para Üstü Hesapla</h2>
+				<GivenAmount />
 				<form>
 					<label htmlFor="toplam">Toplam:</label>
 					<input
