@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/para-ustu/static/css/main.3624b3d7.css",
+    "main.js": "/para-ustu/static/js/main.6f677e57.js",
+    "static/media/1tl.png": "/para-ustu/static/media/1tl.0ecb660dd6eec2bcb5a0.png",
+    "static/media/100tl.jpeg": "/para-ustu/static/media/100tl.d5fa530b65677f9eabe4.jpeg",
+    "static/media/200tl.jpeg": "/para-ustu/static/media/200tl.265247b9860cd0023566.jpeg",
+    "static/media/20tl.jpeg": "/para-ustu/static/media/20tl.d7b2067ab20a8d497ce0.jpeg",
+    "static/media/50tl.jpeg": "/para-ustu/static/media/50tl.a911a66e786afdbdfb2f.jpeg",
+    "static/media/10tl.jpeg": "/para-ustu/static/media/10tl.741cc7d93aa1c939ffb7.jpeg",
+    "static/media/5tl.jpeg": "/para-ustu/static/media/5tl.6f8a249ff6d078f03af9.jpeg",
+    "index.html": "/para-ustu/index.html",
+    "main.3624b3d7.css.map": "/para-ustu/static/css/main.3624b3d7.css.map",
+    "main.6f677e57.js.map": "/para-ustu/static/js/main.6f677e57.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3624b3d7.css",
+    "static/js/main.6f677e57.js"
+  ]
+}
