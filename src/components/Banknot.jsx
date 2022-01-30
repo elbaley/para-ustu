@@ -1,4 +1,6 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // IMAGES of banknotes and the coin
 import ikiyuztl from '../assets/images/200tl.jpeg';
 import yuztl from '../assets/images/100tl.jpeg';
@@ -20,22 +22,36 @@ function Banknot({ kasa, note, setKasa }) {
 	const handleBalanceChange = (e) => {
 		const value = e.target.value;
 		const bancnote = e.target.name;
+		if (value >= 0) {
+			setKasa((oldKasa) => {
+				let newKasa = { ...oldKasa };
+				newKasa[Number(bancnote)] = Number(value);
 
-		setKasa((oldKasa) => {
-			let newKasa = { ...oldKasa };
-			newKasa[Number(bancnote)] = Number(value);
-
-			return newKasa;
-		});
+				return newKasa;
+			});
+		} else {
+			return -1;
+		}
 	};
 	const handleBalanceButton = (e) => {
 		const banknote = Number(e.target.name);
 		const operation = e.target.className;
 		let newKasa = { ...kasa };
-		if (operation === 'increase') {
-			newKasa[banknote]++;
+		if (operation === 'decrease') {
+			if (newKasa[banknote] === 0) {
+				return toast.error("Değer 0'dan küçük olamaz!", {
+					position: 'top-right',
+					autoClose: 2500,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+			}
+			newKasa[banknote]--;
 		} else {
-			newKasa[banknote] = newKasa[banknote] - 1;
+			newKasa[banknote]++;
 		}
 		setKasa(newKasa);
 	};
@@ -43,6 +59,7 @@ function Banknot({ kasa, note, setKasa }) {
 		<>
 			<div className={`tl${note} card`}>
 				<img src={images[note]} alt="" />
+
 				<div className="note-info">
 					<button
 						name={note}

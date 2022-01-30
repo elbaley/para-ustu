@@ -9,15 +9,27 @@ function App() {
 	const [verilen, setVerilen] = useState(0);
 	const [kasaToplam, setKasaToplam] = useState(0);
 	const [kasa, setKasa] = useState({
-		200: 1,
-		100: 1,
-		50: 2,
-		20: 1,
-		10: 1,
-		5: 2,
-		1: 5,
+		200: 0,
+		100: 0,
+		50: 0,
+		20: 0,
+		10: 0,
+		5: 0,
+		1: 0,
 	});
-	const [sonuc, setSonuc] = useState('');
+	const [scrolled, setScrolled] = useState(false);
+	const handleScroll = () => {
+		const offset = window.scrollY;
+		if (offset > 50) {
+			setScrolled(true);
+		} else {
+			setScrolled(false);
+		}
+	};
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
+	});
+
 	const verilecekParaUstu = verilen - toplam;
 	useEffect(() => {
 		const calculateTotalBalance = (obj) => {
@@ -31,47 +43,9 @@ function App() {
 		calculateTotalBalance(kasa);
 	}, [kasa]);
 
-	const handleCalculation = (e) => {
-		e.preventDefault();
-		let paraustu = verilecekParaUstu;
-		let banknotlar = [200, 100, 50, 20, 10, 5, 1];
-		let verilenler = { ...kasa };
-		banknotlar.map((banknot) => {
-			console.log(`Kasadaki ${banknot}luk miktari: ${kasa[banknot]}`);
-			if (paraustu >= banknot && verilenler[banknot] !== 0) {
-				do {
-					console.log(banknot + ' verdim');
-					paraustu = paraustu - banknot;
-					verilenler[banknot] -= 1;
-
-					console.log(kasa);
-					console.log(
-						'======= verilenler aşağıda, kasa yukarıda 😀 ======'
-					);
-					console.log(verilenler);
-				} while (paraustu >= banknot && verilenler[banknot] !== 0);
-			}
-		});
-
-		console.log('==========');
-		console.log(paraustu);
-		// if we cant give the remainder tell to the customer
-		if (paraustu !== 0) {
-			setSonuc(
-				'Kusura bakmayın kasada o kadar para yok, bozdurabilir misiniz?'
-			);
-		} else {
-			let newBalance = { ...kasa };
-			for (const [key, value] of Object.entries(kasa)) {
-				newBalance[key] -= verilenler[key];
-			}
-			setKasa(verilenler);
-			setSonuc(JSON.stringify(newBalance));
-		}
-	};
 	return (
 		<div className="App">
-			<nav>
+			<nav className={scrolled ? 'navbar scrolled' : ''}>
 				<h2>
 					Kasa Durumu : <span>{kasaToplam}₺</span>{' '}
 				</h2>
@@ -86,32 +60,15 @@ function App() {
 					<Banknot kasa={kasa} note={100} setKasa={setKasa} />
 					<Banknot kasa={kasa} note={200} setKasa={setKasa} />
 				</div>
-				<GivenAmount />
-				<form>
-					<label htmlFor="toplam">Toplam:</label>
-					<input
-						type="number"
-						name="toplam"
-						value={toplam}
-						onChange={(e) => {
-							setToplam(e.target.value);
-						}}
-					/>
-					<label htmlFor="verilen">Verilen:</label>
-					<input
-						type="number"
-						name="verilen"
-						value={verilen}
-						onChange={(e) => {
-							setVerilen(e.target.value);
-						}}
-					/>
-					<button onClick={handleCalculation}>Hesapla</button>
-				</form>
-				<h1>Para üstü</h1>
-				<p>{verilecekParaUstu}₺ para üstü verilecek!</p>
-				<h1>Sonuç</h1>
-				{sonuc}
+				<GivenAmount
+					verilecekParaUstu={verilecekParaUstu}
+					kasa={kasa}
+					setKasa={setKasa}
+					toplam={toplam}
+					setToplam={setToplam}
+					verilen={verilen}
+					setVerilen={setVerilen}
+				/>
 			</main>
 		</div>
 	);

@@ -52,6 +52,14 @@ nav h2 span {
 	color: #2da548;
 	font-weight: bold;
 }
+/* Navbar Sticky */
+.scrolled {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2;
+}
 ul {
 	list-style: inside;
 }
@@ -113,6 +121,7 @@ main {
 	height: 250px;
 	object-fit: contain;
 }
+
 .note-info {
 	display: flex;
 }
@@ -268,6 +277,28 @@ input[type='number']::-webkit-outer-spin-button {
 	border-radius: 0 8px 8px 0;
 	color: #fff;
 }
+/* Calculate */
+.calculate-container {
+	margin: 10px 0;
+	font-size: 1.1rem;
+}
+.calculate-container input {
+	height: 30px;
+	text-align: center;
+	margin-right: 5px;
+}
+
+.calculate-container button {
+	background: #28a745;
+	border-radius: 8px;
+	border: none;
+	font-size: 1rem;
+	height: 30px;
+	margin: 10px 0;
+	color: #fff;
+	cursor: pointer;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 	/* body {
